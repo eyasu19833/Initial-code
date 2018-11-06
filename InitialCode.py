@@ -25,11 +25,7 @@ with open("C:/Users/x190170/Documents/Data/Capstone/Code/output.txt", "r") as in
 		 #split the line and take the last column, which is the tweet text and remove the URL from it, and append to "array"
          array.append(re.sub(r"http\S+", "", line).split("|")[-1:])
 
-kmeans = KMeans(n_clusters=2)	
-#stopwords = nltk.corpus.stopwords.words('english')
 
-
-#vectorize the text i.e. convert the strings to numeric features
 vectorizer = TfidfVectorizer(stop_words='english')
 X = vectorizer.fit_transform(array)
 #cluster documents
@@ -44,5 +40,3 @@ for i in range(true_k):
     print "Cluster %d:" % i,
     for ind in order_centroids[i, :10]:
         print ' %s' % terms[ind],
-    print
-print(array)
